@@ -1,0 +1,7 @@
+<h1>Thems my faves</h1>
+
+<% // Iterate through array of faves & print name, link to details page %>
+
+<%= faves.forEach(function(fave) { %>
+    <p> <a href="/results/<%= fave.imdbid %>"> <%= fave.title %> </a></p>
+<% }) %>

@@ -47,24 +47,29 @@ app.get('/detail', function(req, res) {
     });
 });
 
-app.get('/faves', function(req, res) {
-  res.send('My Faves');
-});
 
 app.post('/faves', function(req, res) {
   // res.send(req.body);
-  // console.log('first console log')
+  console.log(req.body)
   db.fave.findOrCreate({
     where: {
       imdbid: req.body.imdbid
     },
     defaults: {
-      title: req.body.title
+      title: req.body.Title
     }
   })
     .then(function([fave, created]) {
       // console.log(`${fave.title} is ${created ? 'now in my faves' : 'already in my faves'}`);
       res.redirect('/faves');
+    });
+});
+
+app.get('/faves', function(req, res) {
+  // res.send('My Faves');
+  db.fave.findAll()
+    .then(function(foundFaves) {
+      res.render('faves.ejs', { fave: foundFaves });
     });
 });
 
