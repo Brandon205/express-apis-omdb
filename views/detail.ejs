@@ -1,5 +1,12 @@
 <% // Render individual movie details here %>
 <% // This is how to do comments in EJS, by the way... %>
 
-<h2><%= film.Title %> (<%= film.Year %>) </h2>
-<img src="<%= film.Poster %>" alt="">
+<h2><%= movie.Title %> (<%= movie.Year %>) </h2>
+<img src="<%= movie.Poster %>" alt="">
+
+<form action="/faves" method="POST">
+    <input type="hidden" name="imdbid" value="<%= movie.imdbID %>">
+    <input type="hidden" name="title" value="<%= movie.title %>">
+
+    <input type="submit" value="Add to Favorites">
+</form>

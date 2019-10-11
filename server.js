@@ -3,6 +3,7 @@ const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 const axios = require('axios');
+const db = require('./models');
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
@@ -41,7 +42,29 @@ app.get('/detail', function(req, res) {
     }
   })
     .then(function(movie) {
-      res.render('detail', { film: movie.data });
+      console.log(movie.data);
+      res.render('detail', { movie: movie.data });
+    });
+});
+
+app.get('/faves', function(req, res) {
+  res.send('My Faves');
+});
+
+app.post('/faves', function(req, res) {
+  // res.send(req.body);
+  // console.log('first console log')
+  db.fave.findOrCreate({
+    where: {
+      imdbid: req.body.imdbid
+    },
+    defaults: {
+      title: req.body.title
+    }
+  })
+    .then(function([fave, created]) {
+      // console.log(`${fave.title} is ${created ? 'now in my faves' : 'already in my faves'}`);
+      res.redirect('/faves');
     });
 });
 
