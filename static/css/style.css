@@ -1,0 +1,15 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav {
+    background-color: gray;
+    padding: 10px auto;
+    margin: 15px;
+}
+
+a {
+    margin: 10px;
+}
