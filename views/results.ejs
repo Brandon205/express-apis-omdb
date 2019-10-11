@@ -3,6 +3,8 @@
 
 <ul>
     <% movies.forEach(function(movie, id) { %>
-        <li> <a href="/detail/?i=<%= movie.imdbID %>"> <%= movie.Title %> </a></li>
+        <p> <a href="/detail/?i=<%= movie.imdbID %>"> <%= movie.Title %> </a> </p>
+            <img src="<%= movie.Poster %>" alt="<%= movie.Title %> picture">
+            <hr />
     <% }) %>
 </ul>

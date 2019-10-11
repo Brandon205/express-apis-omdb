@@ -25,26 +25,25 @@ app.get('/results', function(req, res) {
   axios.get('http://www.omdbapi.com', {
     params: {
       s: req.query.q,
-      apikey: process.env.API_KEY,
+      apikey: process.env.API_KEY
     }
   })
-  .then(function(foundMovies) {
-    res.render('results.ejs', {movies: foundMovies.data.Search});
-  })
-})
+    .then(function(foundMovies) {
+      res.render('results.ejs', { movies: foundMovies.data.Search });
+    });
+});
 
 app.get('/detail', function(req, res) {
   axios.get('http://www.omdbapi.com', {
     params: {
       i: req.query.i,
-      apikey: process.env.API_KEY,
+      apikey: process.env.API_KEY
     }
   })
-  .then(function(movie) {
-    res.render('detail', {film: movie.data});
-    // res.send(movie.data);
-  })
-})
+    .then(function(movie) {
+      res.render('detail', { film: movie.data });
+    });
+});
 
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);

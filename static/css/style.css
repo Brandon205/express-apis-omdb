@@ -6,10 +6,8 @@ html, body {
 
 nav {
     background-color: gray;
-    padding: 10px auto;
-    margin: 15px;
 }
 
 a {
-    margin: 10px;
+    height: 2.5em;
 }
